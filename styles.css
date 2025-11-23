@@ -1,0 +1,299 @@
+/* ===== Paleta y helpers ===== */
+:root {
+  --bg: #0e0e0f;      /* fondo oscuro */
+  --card: #151516;    /* tarjetas */
+  --muted: #9ea0a4;   /* texto secundario */
+  --text: #e9e9ea;    /* texto principal */
+  --accent: #e53935;  /* rojo acento */
+  --accent-2: #ff6b6b;
+}
+
+* { box-sizing: border-box; }
+img { display: block; max-width: 100%; height: auto; }
+
+body {
+  font-family: 'Inter', system-ui, -apple-system, Segoe UI, Roboto, sans-serif;
+  color: var(--text);
+  background: var(--bg);
+  margin: 0;
+  line-height: 1.55;
+}
+
+/* ===== Contenedor general (1000–2000px) ===== */
+.site {
+  width: clamp(1000px, 90vw, 2000px);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  min-height: 100dvh;
+  gap: 28px;             /* un pelín más de aire entre bloques */
+  padding: 0 16px;
+}
+
+/* ===== HEADER ===== */
+.header {
+  display: flex;
+  align-items: center;
+  /* Separación clara entre marca y menú:
+     La marca empuja a la izquierda, el menú queda a la derecha. */
+  gap: 24px;             /* más separación general para que no “se junte” */
+  padding: 18px 0;
+  border-bottom: 1px solid #222;
+}
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-right: auto;     /* CLAVE: empuja el menú hacia la derecha */
+}
+
+.brand__logo {
+  /* LOGO CUADRADO bonito */
+  width: 64px;
+  aspect-ratio: 1 / 1;    /* fuerza la forma cuadrada */
+  object-fit: cover;       /* recorta centrado si tu foto no es cuadrada */
+  border-radius: 10px;
+  border: 1px solid #222;
+}
+
+.brand__name {
+  font-family: 'Anton', sans-serif;
+  text-decoration: none;
+  color: var(--text);
+  font-size: 30px;
+  letter-spacing: .6px;
+}
+.brand__name span { color: var(--accent); }
+
+/* ===== NAV ===== */
+.nav { display: block; }
+
+.menu {
+  list-style: none;
+  display: flex;          /* menú horizontal */
+  gap: 22px;              /* más aire entre opciones del menú */
+  padding: 0;
+  margin: 0;
+}
+
+.menu__link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  text-decoration: none;
+  color: var(--text);
+  padding: 10px 14px;     /* algo más de padding para no “pegarse” */
+  border-radius: 10px;
+  font-weight: 600;
+  transition: background .2s, color .2s;
+}
+.menu__link:hover,
+.menu__link:focus { background: #1e1e20; color: var(--accent-2); }
+.menu__link.is-active { border: 1px solid #333; }
+
+/* Submenú solo con :hover (estilo css3-menu-generator) */
+.menu__item--has-sub { position: relative; }
+.submenu {
+  position: absolute;
+  top: calc(100% + 10px);
+  left: 0;
+  background: #1a1a1b;
+  border: 1px solid #2a2a2c;
+  border-radius: 12px;
+  min-width: 220px;
+  padding: 8px;
+  display: none;
+  flex-direction: column;
+  gap: 6px;
+  z-index: 10;
+}
+.submenu__link {
+  text-decoration: none;
+  color: var(--text);
+  padding: 10px 12px;
+  border-radius: 8px;
+  display: block;
+}
+.submenu__link:hover { background: #222; color: var(--accent-2); }
+.menu__item--has-sub:hover .submenu,
+.menu__item--has-sub:focus-within .submenu { display: flex; }
+
+/* ===== HERO ===== */
+.hero {
+  display: flex;
+  align-items: center;
+  gap: 28px;                 /* más aire entre texto e imagen */
+  background: linear-gradient(180deg, #141415, #0f0f10);
+  border: 1px solid #222;
+  border-radius: 16px;
+  padding: 28px;
+}
+
+.hero__title {
+  font-family: 'Anton', sans-serif;
+  font-size: clamp(30px, 4vw, 56px);
+  margin: 0 0 10px;
+}
+
+.hero__subtitle { color: var(--muted); margin: 0; }
+
+/* Imagen HERO CUADRADA, centrada y bonita */
+.hero__img {
+  width: 420px;              /* tamaño cómodo en desktop */
+  max-width: 40vw;
+  aspect-ratio: 1 / 1;       /* CUADRADA */
+  object-fit: cover;          /* recorta centrando bien */
+  border-radius: 14px;
+  border: 1px solid #222;
+}
+
+/* ===== LAYOUT PRINCIPAL (main + aside) ===== */
+.layout {
+  display: flex;
+  gap: 28px;                  /* más espacio entre columnas */
+}
+
+.main {
+  flex: 1 1 70%;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Cards: cuadradas y limpias */
+.cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+}
+
+.card {
+  background: var(--card);
+  border: 1px solid #222;
+  border-radius: 16px;
+  width: 320px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+.card__img {
+  aspect-ratio: 1 / 1;       /* TODAS LAS IMÁGENES CUADRADAS */
+  object-fit: cover;          /* recorte centrado para que quede bonita */
+}
+
+.card__title {
+  font-family: 'Anton', sans-serif;
+  font-size: 22px;
+  margin: 14px 16px 6px;
+}
+
+.card__txt {
+  color: var(--muted);
+  margin: 0 16px 16px;
+}
+
+.card__btn {
+  margin: 0 16px 16px;
+  display: inline-block;
+  padding: 10px 14px;
+  border-radius: 10px;
+  text-decoration: none;
+  color: white;
+  background: var(--accent);
+  transition: transform .05s, background .2s;
+}
+.card__btn:hover { background: var(--accent-2); transform: translateY(-1px); }
+
+/* ===== ASIDE ===== */
+.aside {
+  flex: 1 1 30%;
+  background: #121213;
+  border: 1px solid #222;
+  border-radius: 16px;
+  padding: 16px;
+  height: fit-content;
+}
+
+.aside__title {
+  font-family: 'Anton', sans-serif;
+  margin: 10px 0 8px;
+}
+
+.aside__list, .aside__links {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 12px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.aside__links a { color: var(--accent-2); text-decoration: none; }
+.aside__links a:hover { text-decoration: underline; }
+
+/* ===== FOOTER ===== */
+.footer {
+  border-top: 1px solid #222;
+  padding: 22px 0 40px;
+  text-align: center;
+  color: var(--muted);
+}
+
+.social {
+  margin-top: 10px;
+  display: flex;
+  gap: 14px;
+  justify-content: center;
+}
+.social a {
+  color: var(--text);
+  width: 40px; height: 40px;
+  border: 1px solid #333; border-radius: 50%;
+  display: grid; place-items: center;
+  text-decoration: none;
+  transition: background .2s, color .2s;
+}
+.social a:hover { background: var(--accent); color: white; }
+
+/* ===== RESPONSIVE (móvil) ===== */
+@media (max-width: 1024px) {
+  .site { width: 100%; }
+  .hero { flex-direction: column; align-items: stretch; }
+  .hero__img { width: 100%; max-width: 100%; } /* hero cuadrado, a ancho completo */
+  .layout { flex-direction: column; }
+  .card { width: 100%; } /* cards a ancho completo pero imagen sigue cuadrada */
+}
+
+/* ====== FIX superposición "POWERLIFTING" / "Inicio" ====== */
+/* 1) En desktop damos un poco más de aire entre marca y menú */
+.header { gap: 28px; }
+.menu   { gap: 24px; }
+
+/* 2) Si falta ancho, que el header pueda partir en dos filas */
+.header { flex-wrap: wrap; }
+
+/* 3) A partir de 1280px hacia abajo, forzamos marca arriba y menú debajo */
+@media (max-width: 1280px) {
+  .brand { 
+    margin-right: 0;         /* ya no empuja al menú */
+    width: 100%;             /* la marca ocupa toda la fila superior */
+    justify-content: flex-start;
+  }
+  .nav {
+    width: 100%;             /* el menú pasa a la fila de abajo */
+    padding-top: 8px;
+    border-top: 1px solid #222;
+  }
+  .menu {
+    justify-content: flex-start;
+    flex-wrap: wrap;         /* si aún no cabe, que rompa a dos líneas */
+    gap: 16px;
+  }
+}
+
+/* ====== Imágenes más cuadradas y uniformes (por si no lo tienes) ====== */
+.brand__logo { width: 64px; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 10px; }
+.hero__img   { width: 420px; max-width: 40vw; aspect-ratio: 1 / 1; object-fit: cover; border-radius: 14px; }
+.card__img   { aspect-ratio: 1 / 1; object-fit: cover; }

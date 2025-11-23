@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <!-- Metas básicas -->
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Boilerplate de sitio web de powerlifting (2º DAW). Estructura semántica + Flexbox.">
+  <meta name="author" content="Jon">
+  <title>Powerlifting Jon</title>
+
+  <!-- Normalize (CDN) -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+
+  <!-- Fuentes + iconos -->
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <!-- Mi CSS -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Contenedor global (ancho variable 1000–2000px con clamp en CSS) -->
+  <div class="site">
+
+    <!-- ============== HEADER ============== -->
+    <header class="header" role="banner">
+      <!--
+        Marca: logo + nombre.
+        El CSS la recorta a cuadrado automáticamente con object-fit: cover.
+      -->
+      <div class="brand">
+        <img class="brand__logo" src="img/1.jpg" alt="Logo o imagen representativa de Jon haciendo powerlifting">
+        <a class="brand__name" href="#inicio">POWER<span>LIFTING</span></a>
+      </div>
+
+      <!--
+        Menú principal.
+        Va a la derecha gracias a CSS (la marca empuja con margin-right:auto).
+      -->
+      <nav id="nav" class="nav" role="navigation">
+        <ul class="menu">
+          <li class="menu__item"><a href="#inicio" class="menu__link is-active">Inicio</a></li>
+
+          <li class="menu__item menu__item--has-sub">
+            <a href="#secciones" class="menu__link">Rutinas <i class="fa-solid fa-chevron-down" aria-hidden="true"></i></a>
+            <ul class="submenu">
+              <li><a class="submenu__link" href="#secciones">Fuerza 5x5</a></li>
+              <li><a class="submenu__link" href="#secciones">Hipertrofia</a></li>
+              <li><a class="submenu__link" href="#secciones">Técnica (SQ/BP/DL)</a></li>
+            </ul>
+          </li>
+
+          <li class="menu__item"><a href="#secciones" class="menu__link">Secciones</a></li>
+          <li class="menu__item"><a href="#contacto" class="menu__link">Contacto</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- ============== HERO ============== -->
+    <!--
+      Portada: texto + imagen CUADRADA.
+      Si tu imagen es horizontal/vertical, CSS la centra y recorta bonito.
+    -->
+    <section id="inicio" class="hero" aria-label="presentación">
+      <div class="hero__text">
+        <h1 class="hero__title">Powerlifting sin humo</h1>
+        <p class="hero__subtitle">Sentadilla, banca y peso muerto. Pocas cosas, bien hechas.</p>
+      </div>
+      <img class="hero__img" src="img/2.jpg" alt="Foto de Jon entrenando powerlifting">
+    </section>
+
+    <!-- ============== LAYOUT PRINCIPAL ============== -->
+    <div id="secciones" class="layout">
+      <main class="main" role="main">
+        <!--
+          Cards (tres artículos). Todas las imágenes cuadradas:
+        -->
+        <section class="cards" aria-label="artículos">
+          <article class="card">
+            <img class="card__img" src="img/4.jpg" alt="Foto de Jon entrenando o material de powerlifting 1">
+            <h2 class="card__title">Programa 5x5</h2>
+            <p class="card__txt">Base de fuerza simple. Subo peso cuando cumplo técnica.</p>
+            <a class="card__btn" href="#secciones">Ver</a>
+          </article>
+
+          <article class="card">
+            <img class="card__img" src="img/3.jpg" alt="Foto de Jon entrenando o material de powerlifting 2">
+            <h2 class="card__title">Técnica de banca</h2>
+            <p class="card__txt">Set-up estable, ruta limpia y pausa breve si toca.</p>
+            <a class="card__btn" href="#secciones">Ver</a>
+          </article>
+
+          <article class="card">
+            <img class="card__img" src="img/1.jpg" alt="Foto de Jon entrenando o material de powerlifting 3">
+            <h2 class="card__title">Peso muerto</h2>
+            <p class="card__txt">Barra pegada, espalda tensa y cadera paciente.</p>
+            <a class="card__btn" href="#secciones">Ver</a>
+          </article>
+        </section>
+      </main>
+
+      <!-- Aside (tips + redes) -->
+      <aside class="aside" aria-label="extra">
+        <h3 class="aside__title"><i class="fa-solid fa-bolt" aria-hidden="true"></i> Tips rápidos</h3>
+        <ul class="aside__list">
+          <li>Calienta de verdad (progresivo y específico).</li>
+          <li>Progresa si cumples técnica (no solo por ego).</li>
+          <li>Descanso y comida importan mucho.</li>
+        </ul>
+
+        <h3 class="aside__title" id="contacto"><i class="fa-solid fa-link" aria-hidden="true"></i> Contacto</h3>
+        <ul class="aside__links">
+          <li><a href="#" aria-label="Instagram">Instagram</a></li>
+          <li><a href="#" aria-label="TikTok">TikTok</a></li>
+          <li><a href="#" aria-label="YouTube">YouTube</a></li>
+        </ul>
+      </aside>
+    </div>
+
+    <!-- ============== FOOTER ============== -->
+    <footer class="footer" role="contentinfo">
+      <p>© 2025 Powerlift by Jon • HTML + CSS (Flexbox) • Hecho en clase.</p>
+      <div class="social">
+        <a href="#" aria-label="Instagram"><i class="fa-brands fa-instagram" aria-hidden="true"></i></a>
+        <a href="#" aria-label="TikTok"><i class="fa-brands fa-tiktok" aria-hidden="true"></i></a>
+        <a href="#" aria-label="YouTube"><i class="fa-brands fa-youtube" aria-hidden="true"></i></a>
+        <a href="#" aria-label="X"><i class="fa-brands fa-x-twitter" aria-hidden="true"></i></a>
+      </div>
+    </footer>
+  </div>
+</body>
+</html>
